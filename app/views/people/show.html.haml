@@ -1,0 +1,26 @@
+%h1= t '.title'
+%p
+  = link_to t('back'), people_path
+  = link_to t('edit'), edit_person_path(@person)
+
+%dl
+  %dt= Person.human_attribute_name :url
+  %dd= @person.url
+  %dt= Person.human_attribute_name :firstname
+  %dd= @person.firstname
+  %dt= Person.human_attribute_name :lastname
+  %dd= @person.lastname
+  %dt= Person.human_attribute_name :birthname
+  %dd= @person.birthname
+  %dt= Person.human_attribute_name :sex
+  %dd= @person.sex
+  %dt= Person.human_attribute_name :birthdate
+  %dd= @person.birthdate
+  %dt= Person.human_attribute_name :deathdate
+  %dd= @person.deathdate
+  %dt= Person.human_attribute_name :birthplace
+  %dd= @person.birthplace
+  %dt= Person.human_attribute_name :birthplaceurl
+  %dd= @person.birthplaceurl
+  %dt= Person.human_attribute_name :thumbnail
+  %dd= @person.thumbnail
