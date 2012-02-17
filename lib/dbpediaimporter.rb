@@ -11,19 +11,26 @@ class DbPediaImporter
     ?person dbpedia-owl:birthPlace ?birthplace .
     ?birthplace rdfs:label ?birthplacename .
     ?person dbpedia-owl:thumbnail ?thumbnail .
-    FILTER(?birthplacename = "Gummersbach"@en)
+    FILTER(?lastname = "Miller"@en)
     }')
 
     result.each do |solution|
-      person = solution.to_hash[:person].to_s
+      person_url = solution.to_hash[:person].to_s
       firstname = solution.to_hash[:firstname].to_s
       lastname = solution.to_hash[:lastname].to_s
       birthdate = solution.to_hash[:birthdate].to_s
-      birthplace = solution.to_hash[:birthplace].to_s
+      birthplace_url = solution.to_hash[:birthplace].to_s
       birthplacename = solution.to_hash[:birthplacename].to_s
       thumbnail = solution.to_hash[:thumbnail].to_s
  
-      person = Person.create(:url => person, :firstname => firstname, :lastname => lastname, :thumbnail => thumbnail)
+ 			person = Person.find_or_initialize_by_url(person_url)
+      person.update_attributes(:url => person_url, :firstname => firstname, :lastname => lastname, :thumbnail => thumbnail, :birthdate => birthdate)
+      
+      place=Location.find_or_initialize_by_url(birthplace_url)
+      place.url = birthplace_url
+      place.name = birthplacename
+      place.save
+      person.residences.create(:location_id => place.id, :status => "birthplace")
       p person.inspect 
 	  end
   end

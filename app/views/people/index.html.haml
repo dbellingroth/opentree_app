@@ -4,6 +4,7 @@
 %table
   %thead
     %tr
+      %th
       %th= Person.human_attribute_name :name
       %th= Person.human_attribute_name :sex
       %th= Person.human_attribute_name :birthdate
@@ -15,10 +16,10 @@
       %tr{ :class => cycle(:odd, :even) }
         %td
           %img{:src => person.thumbnail, :alt => person.firstname + " " + person.lastname}
-          = person.firstname + " " + person.lastname
+        %td= person.firstname + " " + person.lastname  
         %td= person.sex
         %td= person.birthdate
-        %td= person.birthplace
+        %td= person.residences.find_by_status("birthplace").location.name if person.residences.find_by_status("birthplace")
         %td.action= link_to t('show'), person
         %td.action= link_to t('edit'), edit_person_path(person)
         %td.action= link_to t('destroy'), person, :confirm => 'Are you sure?', :method => :delete
