@@ -4,6 +4,9 @@ OpentreeApp::Application.routes.draw do
   get "home/index"
   
   root :to => "home#index"
+  match "/importfromdbpedia" => "home#importfromdbpedia"
+  match "/importfromfacebook" => "home#importfromfacebook"
+  match "/exporttosesame" => "home#exporttosesame"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

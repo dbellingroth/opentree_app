@@ -11,7 +11,7 @@ class DbPediaImporter
     ?person dbpedia-owl:birthPlace ?birthplace .
     ?birthplace rdfs:label ?birthplacename .
     ?person dbpedia-owl:thumbnail ?thumbnail .
-    FILTER(?lastname = "Miller"@en)
+    FILTER(?birthplacename = "Cologne"@en)
     }')
 
     result.each do |solution|
