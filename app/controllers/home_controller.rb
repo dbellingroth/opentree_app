@@ -1,5 +1,6 @@
 require 'dbpediaimporter'
 require 'sesameexporter'
+require 'facebookimporter'
 
 class HomeController < ApplicationController
   def index
@@ -12,12 +13,12 @@ class HomeController < ApplicationController
   end
   
   def importfromfacebook
-  	DbPediaImporter.create_people_from_dbpedia()
+  	FacebookImporter.fetch_relatives()
   	redirect_to people_path
   end
   
   def exporttosesame
   	SesameExporter.export
   	redirect_to people_path
-  end
+  end    
 end
