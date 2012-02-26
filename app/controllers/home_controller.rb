@@ -8,7 +8,9 @@ class HomeController < ApplicationController
   end
   
   def importfromdbpedia
-  	DbPediaImporter.create_people_from_dbpedia()
+  	params.delete("action")
+  	params.delete("controller")
+  	DbPediaImporter.create_people_from_dbpedia(params)
   	redirect_to people_path
   end
   

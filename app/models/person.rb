@@ -3,5 +3,25 @@ class Person < ActiveRecord::Base
 	
 	has_many :residences
 	has_many :locations, :through => :residences
+	has_many :relations, :class_name => "Relation", :foreign_key => "base_person_id", :dependent => :destroy
+	has_many :related_relations, :class_name => "Relation", :foreign_key => "related_person_id", :dependent => :destroy
 	
+	#RELATION_STATUSES=["uncle","aunt","mother","father","cousin"]
+	
+	def	relatives
+		relations + related_relations
+	end
+	
+	def	uncles
+		#related_relations.where(:status => "uncle")
+	end
+	
+	def	nephews
+		#relations.where(:status => "uncle")
+	end
+	
+	def	set_uncle(person)
+		#self.related_relations.create(:base_person_id => person.id, :status => "uncle")
+	end
+		
 end

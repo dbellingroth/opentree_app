@@ -1,9 +1,14 @@
 require 'sparql/client'
 
 class DbPediaImporter
-	def	self.create_people_from_dbpedia
+	def	self.create_people_from_dbpedia(opts)
     dbpedia = SPARQL::Client.new("http://dbpedia.org/sparql")
-		result = dbpedia.query('SELECT DISTINCT ?person ?firstname ?lastname ?birthdate ?birthplace ?birthplacename ?thumbnail WHERE {
+    
+    filter = ""
+    opts.each do |k,v|
+    	filter += "FILTER(?#{k} = '#{v}'@en). "
+    end
+    query = "SELECT DISTINCT ?person ?firstname ?lastname ?birthdate ?birthplace ?birthplacename ?thumbnail WHERE {
     ?person rdf:type foaf:Person .
     ?person foaf:givenName ?firstname .
     ?person foaf:surname ?lastname .
@@ -11,8 +16,9 @@ class DbPediaImporter
     ?person dbpedia-owl:birthPlace ?birthplace .
     ?birthplace rdfs:label ?birthplacename .
     ?person dbpedia-owl:thumbnail ?thumbnail .
-    FILTER(?birthplacename = "Cologne"@en)
-    }')
+		#{filter}
+    }"
+		result = dbpedia.query(query)
 
     result.each do |solution|
       person_url = solution.to_hash[:person].to_s

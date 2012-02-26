@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  base_person_id: 1
+  related_person_id: 1
+  status: MyString
+
+two:
+  base_person_id: 1
+  related_person_id: 1
+  status: MyString
