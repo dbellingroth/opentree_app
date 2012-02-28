@@ -22,5 +22,9 @@ class HomeController < ApplicationController
   def exporttosesame
   	SesameExporter.export
   	redirect_to people_path
-  end    
+  end
+  
+  def map
+  	render 'home/map'
+  end
 end
