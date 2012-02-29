@@ -8,6 +8,7 @@ OpentreeApp::Application.routes.draw do
   match "/importfromfacebook" => "home#importfromfacebook"
   match "/exporttosesame" => "home#exporttosesame"
   match "/map" => "home#map"
+  match "/mapdata" => "home#mapdata"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -6,28 +6,33 @@
 
 :javascript
   function initialize() {
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var latlng = new google.maps.LatLng(51.0, 9.0);
     var myOptions = {
-    zoom: 8,
+    zoom: 6,
     center: latlng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    mapTypeId: google.maps.MapTypeId.TERRAIN
   };
   var map = new google.maps.Map(document.getElementById("map"), myOptions);
         
-    for (i=0;i<=10;i++) {
-    circle = new google.maps.Circle({
-      strokeColor: "#0000FF",
-      strokeOpacity: 1,
-      strokeWeight: 2,
-      fillColor: "#0000FF",
-      fillOpacity: 0.5,
-      map: map,
-      center: new google.maps.LatLng(-34.397+i*0.01, 150.644+i*0.01),
-      radius: 1000
+    if ($("#lastname").val() != "") $.getJSON('/mapdata?lastname='+$("#lastname").val(), function(data) {
+      $.each(data, function(key, val) {
+          circle = new google.maps.Circle({
+          strokeColor: "#0000FF",
+          strokeOpacity: 1,
+          strokeWeight: 2,
+          fillColor: "#0000FF",
+          fillOpacity: 0.5,
+          map: map,
+          center: new google.maps.LatLng(val.lat, val.lon),
+          radius: val.count*5000
+        });
+      });
     });
-    }
-     
+    $("#searchbutton").click(initialize);
   }
-  window.onload = initialize; 
+  window.onload = initialize;
   
+%form
+  %input{:id => "lastname", :type => "text"}
+  %input{:id => "searchbutton", :type => "button" ,:value => "Suchen"}  
 #map
