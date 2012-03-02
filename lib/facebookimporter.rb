@@ -91,6 +91,3 @@ class FacebookImporter
   end
   
 end
-
-
-

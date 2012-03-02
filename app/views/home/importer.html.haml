@@ -4,3 +4,8 @@
   =f.label :lastname
   =f.text_field :lastname
   =f.submit "Anfragen"
+  
+=form_for(Person.new,:url => importfromfacebook_home_index_path) do |f|
+  =f.label :facebook_id
+  =f.text_field :facebook_id, :value => "630819600"
+  =f.submit "Person mit Verwandten importieren"

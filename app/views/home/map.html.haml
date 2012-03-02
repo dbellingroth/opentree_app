@@ -16,15 +16,23 @@
         
     if ($("#lastname").val() != "") $.getJSON('/mapdata?lastname='+$("#lastname").val(), function(data) {
       $.each(data, function(key, val) {
+          
+      
+          if (val.count < 2) color = "00FF00";
+          else if(val.count < 10) color = "77FF00";
+          else if (val.count < 20) color = "FFFF00";
+          else color = "FF0000";
+          
+          
           circle = new google.maps.Circle({
-          strokeColor: "#0000FF",
+          strokeColor: color,
           strokeOpacity: 1,
           strokeWeight: 2,
-          fillColor: "#0000FF",
-          fillOpacity: 0.5,
+          fillColor: color,
+          fillOpacity: 1.0,
           map: map,
           center: new google.maps.LatLng(val.lat, val.lon),
-          radius: val.count*5000
+          radius: 20000
         });
       });
     });
