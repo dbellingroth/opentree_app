@@ -8,11 +8,14 @@ class HomeController < ApplicationController
     redirect_to people_path
   end
   
+  def	importer
+  end
+  
   def importfromdbpedia
-  	params.delete("action")
-  	params.delete("controller")
-  	DbPediaImporter.create_people_from_dbpedia(params)
-  	redirect_to people_path
+  	count= Person.count
+  	DbPediaImporter.create_people_from_dbpedia(params["person"].select{|k,v|!v.blank?})
+  	new_count=Person.count
+  	redirect_to people_path, :notice => "Es wurden #{new_count - count} Personen importiert"
   end
   
   def importfromfacebook

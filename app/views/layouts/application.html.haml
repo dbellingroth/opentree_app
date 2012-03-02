@@ -14,6 +14,14 @@
     #wrapper
       #header
         = image_tag "logo.png"
+        %ul#navigation
+          %li=link_to "Alle Personen", people_path
+          %li=link_to "Importer", importer_home_index_path
+          %li=link_to "Personen löschen", ""
+      -if flash.any?
+        -flash.each do |k,v|
+          #flash_message{:class => k}
+            = v
       #container
         = yield
       #footer

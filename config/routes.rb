@@ -1,11 +1,15 @@
 OpentreeApp::Application.routes.draw do
   resources :people
-
+  resources :home do
+    collection do
+      get :importer
+      post :importfromdbpedia
+      post :importfromfacebook
+    end
+  end
   get "home/index"
   
   root :to => "home#index"
-  match "/importfromdbpedia" => "home#importfromdbpedia"
-  match "/importfromfacebook" => "home#importfromfacebook"
   match "/exporttosesame" => "home#exporttosesame"
   match "/map" => "home#map"
   match "/mapdata" => "home#mapdata"

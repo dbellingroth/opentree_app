@@ -52,11 +52,9 @@ class FacebookImporter
     @person_link = fb_obj.fetch("link")
     get_thumbnail(@person_id)
     
-    if !fb_obj.key?("birthday")
-      @birthdate = fb_obj.update({"birthday"=>"01/01/1001"}).fetch("birthday")
-    else
-      @birthdate = fb_obj.fetch("birthday")
-    end
+    @birthdate = fb_obj["birthday"]
+    puts "++++++++++++++++++"
+    puts fb_obj["birthday"]
      
     if !fb_obj.key?("hometown")
       fb_obj.update({"hometown"=>"no hometown"})
