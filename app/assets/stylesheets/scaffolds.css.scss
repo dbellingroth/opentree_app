@@ -1,9 +1,16 @@
+* {
+  margin: 0;  
+  padding: 0;
+}
+
 body {
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
-  line-height: 18px; }
+  line-height: 18px; 
+  margin: auto;
+  width: 1000px; }
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -17,11 +24,12 @@ pre {
 
 a {
   color: #000;
+  text-decoration: none;
   &:visited {
     color: #666; }
   &:hover {
     color: #fff;
-    background-color: #000; } }
+    background-color: #B2068B; } }
 
 div {
   &.field, &.actions {
@@ -54,3 +62,7 @@ div {
   ul li {
     font-size: 12px;
     list-style: square; } }
+    
+#wrapper {
+  
+}

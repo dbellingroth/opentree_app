@@ -1,3 +1,21 @@
 // Place all the styles related to the People controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$lightgreen: #7CFF5E;
+$basegreen: #2AB20A;
+$baseviolet: #B2068B;
+$lightviolet: #FF5EDA;
+$gwhite: #C1FFAB;
+
+table {
+  width: 1000px;
+}
+
+table tbody tr td {
+  background-color: $lightgreen;
+  padding: 5px 10px 0px 10px;
+}
+
+table thead tr th {
+  background-color: $baseviolet;
+}

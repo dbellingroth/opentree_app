@@ -16,7 +16,7 @@ class HomeController < ApplicationController
   end
   
   def importfromfacebook
-  	FacebookImporter.fetch_relatives()
+  	FacebookImporter
   	redirect_to people_path
   end
   
