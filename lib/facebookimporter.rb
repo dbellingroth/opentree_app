@@ -22,10 +22,10 @@ class FacebookImporter
     response = http.request(request)
     relatives = JSON(response.body)
     
-    relatives.fetch("data").each do |fbperson|
-      @person_id = fbperson.fetch("id")
-      @name = fbperson.fetch("name")
-      @relation = fbperson.fetch("relationship")
+    relatives["data"].each do |fbperson|
+      @person_id = fbperson["id"]
+      @name = fbperson["name"]
+      @relation = fbperson["relationship"]
       get_info(@person_id)
     end
   end
@@ -41,32 +41,23 @@ class FacebookImporter
     response = http.request(request)
     fb_obj = JSON(response.body)
     
-    @person_id = fb_obj.fetch("id")
-    @firstname = fb_obj.fetch("first_name")
-    @lastname = fb_obj.fetch("last_name")
-    if !fb_obj.key?("gender")
-      @sex = fb_obj.update({"gender"=>"no gender"}).fetch("gender")
-    else
-      @sex = fb_obj.fetch("gender")
-    end
-    @person_link = fb_obj.fetch("link")
+    @person_id = fb_obj["id"]
+    @firstname = fb_obj["first_name"]
+    @lastname = fb_obj["last_name"]
+    @sex = fb_obj["gender"] if fb_obj["gender"]
+    @person_link = fb_obj["link"]
     get_thumbnail(@person_id)
     
-    @birthdate = fb_obj["birthday"]
+    @birthdate = fb_obj["birthday"] if fb_obj["birthday"]
     puts "++++++++++++++++++"
     puts fb_obj["birthday"]
-     
-    if !fb_obj.key?("hometown")
-      fb_obj.update({"hometown"=>"no hometown"})
-      @hometown_id = "no cityid avaiable"
-      @hometown_name = "no city avaiable"
-      @hometown_link = "no citylink avaiable"
-    else
-      @hometown_id = fb_obj.fetch("hometown").fetch("id")
-      @hometown_name = fb_obj.fetch("hometown").fetch("name")
+    
+    if fb_obj["hometown"]
+      @hometown_id = fb_obj["hometown"]["id"]
+      @hometown_name = fb_obj["hometown"]["name"]
       get_latlong(@hometown_id)
     end
-    
+        
     person = Person.find_or_initialize_by_url(@person_link)
     person.update_attributes(:url => @person_link, :firstname => @firstname, :lastname => @lastname, :sex => @sex, :birthdate => @birthdate, :birthplace => @hometown_name, :birthplaceurl => @hometown_link, :thumbnail => @profile_pic_url, )
     place = Location.find_or_initialize_by_url(@hometown_link)
@@ -93,16 +84,13 @@ class FacebookImporter
     
     response = http.request(request)
     location_info = JSON(response.body)
-    @hometown_lat = location_info.fetch("location").fetch("latitude")
-    @hometown_long = location_info.fetch("location").fetch("longitude")
-    @hometown_link = location_info.fetch("link")
+    #raise location_info.inspect 
+    @hometown_lat = location_info["location"]["latitude"]
+    @hometown_long = location_info["location"]["longitude"]
+    @hometown_link = location_info["link"]
   end
   
 end
 
-test_person_id = "630819600" 
-test_token = "AAADRgAhoADABAPCYJ8KhqO7F7aiKqHN62y7vJiakaIjqtoRobcIxSBJOokylsWbpGZARaV6u6uZBrwAngwPjhnnAmTHtZCn2LWYExmlDwZDZD"
 
-person = FacebookImporter.new(test_person_id, test_token)
-person.get_relatives
 
