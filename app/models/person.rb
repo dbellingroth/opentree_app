@@ -8,6 +8,8 @@ class Person < ActiveRecord::Base
 	
 	#RELATION_STATUSES=["uncle","aunt","mother","father","cousin"]
 	
+	scope :male, where(:sex => "male")
+	scope :female, where(:sex => "female")
 	def	relatives
 		relations + related_relations
 	end

@@ -99,10 +99,3 @@ class FacebookImporter
   end
   
 end
-
-test_person_id = "630819600" 
-test_token = "AAADRgAhoADABAPCYJ8KhqO7F7aiKqHN62y7vJiakaIjqtoRobcIxSBJOokylsWbpGZARaV6u6uZBrwAngwPjhnnAmTHtZCn2LWYExmlDwZDZD"
-
-person = FacebookImporter.new(test_person_id, test_token)
-person.get_relatives
-

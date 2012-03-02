@@ -23,3 +23,4 @@
         %td.action= link_to t('show'), person
         %td.action= link_to t('edit'), edit_person_path(person)
         %td.action= link_to t('destroy'), person, :confirm => 'Are you sure?', :method => :delete
+= will_paginate @people

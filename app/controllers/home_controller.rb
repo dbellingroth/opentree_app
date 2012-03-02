@@ -19,8 +19,12 @@ class HomeController < ApplicationController
   end
   
   def importfromfacebook
-  	FacebookImporter
-  	redirect_to people_path
+		test_token = "AAADRgAhoADABAPCYJ8KhqO7F7aiKqHN62y7vJiakaIjqtoRobcIxSBJOokylsWbpGZARaV6u6uZBrwAngwPjhnnAmTHtZCn2LWYExmlDwZDZD"
+		count= Person.count
+		fb_importer = FacebookImporter.new(params[:person][:facebook_id], test_token)
+		fb_importer.get_relatives
+  	new_count=Person.count
+  	redirect_to people_path, :notice => "Es wurden #{new_count - count} Personen importiert"
   end
   
   def exporttosesame
@@ -33,24 +37,7 @@ class HomeController < ApplicationController
   end
   
   def mapdata
-  	lastname = params["lastname"]
-  	people = Person.find_all_by_lastname(lastname)
-  	locations = []
-  	
-  	people.each do |p|
-  		p.residences.each do |r|
-  			if r.status == "birthplace"
-  				locations << Location.find_by_id(r.location_id)
-  			end
-  		end
-  	end
-  	
-  	locationlist = locations.map do |l|
-  			{ :lat => l.lat, :lon => l.lon, :count => 1 }
-		end
-		
-  	render :json => locationlist.as_json
-		#render :json => {:location => Location.first.as_json(:only => [:name, :lat, :lon]) }
+		render :json => Location.find_by_person_last_name(params["lastname"]).as_json
   end
   
 end
