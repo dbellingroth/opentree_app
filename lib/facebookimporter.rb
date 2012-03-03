@@ -20,6 +20,7 @@ class FacebookImporter
     request = Net::HTTP::Get.new(uri.request_uri)
     
     response = http.request(request)
+    get_info(@person_id)
     relatives = JSON(response.body)
     
     relatives["data"].each do |fbperson|
@@ -48,10 +49,16 @@ class FacebookImporter
     @person_link = fb_obj["link"]
     get_thumbnail(@person_id)
     
-    @birthdate = fb_obj["birthday"] if fb_obj["birthday"]
-    puts "++++++++++++++++++"
-    puts fb_obj["birthday"]
-    
+    if fb_obj["birthday"] 
+      if (/\d{2}\/\d{2}\/\d{4}/ =~ fb_obj["birthday"].to_s) == 0
+        @birthdate = Date.strptime(fb_obj["birthday"].to_s, '%m/%d/%Y')
+      else
+        @birthdate = nil
+      end
+    else
+        @birthdate = nil      
+    end
+              
     if fb_obj["hometown"]
       @hometown_id = fb_obj["hometown"]["id"]
       @hometown_name = fb_obj["hometown"]["name"]
