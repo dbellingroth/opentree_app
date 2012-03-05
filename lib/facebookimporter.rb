@@ -22,6 +22,7 @@ class FacebookImporter
     response = http.request(request)
     get_info(@person_id)
     @base_person_url = @person_link
+    
     relatives = JSON(response.body)
     
     relatives["data"].each do |fbperson|
@@ -29,7 +30,7 @@ class FacebookImporter
       @name = fbperson["name"]
       @relation = fbperson["relationship"]
       get_info(@person_id, @relation)
-    end
+    end if relatives && relatives["data"]
   end
   
   def get_info(person_id, relation_status=nil)

@@ -21,7 +21,7 @@
     - @person.relatives.each do |relative|
       %div.block
         %div.dt= relative.status
-        %div.dd= relative_name(@person, relative)
+        %div.dd= link_to(relative.relative_person(@person).name, person_path(relative.relative_person(@person)))
     %div.block
       %div.dt= Person.human_attribute_name :sex
       %div.dd= @person.sex
