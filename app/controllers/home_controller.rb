@@ -40,4 +40,12 @@ class HomeController < ApplicationController
 		render :json => Location.find_by_person_last_name(params["lastname"]).as_json
   end
   
+  def destroyall
+  	count= Person.count
+  	Person.all.each do |p|
+  		p.destroy
+  	end
+  	redirect_to people_path, :notice => "Es wurden #{count} Personen geloescht"
+  end
+  
 end

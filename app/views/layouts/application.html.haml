@@ -14,6 +14,7 @@
     #wrapper
       #header
         = image_tag "logo.png", :alt => "Home"
+        %p=display_person_count
         #navigation
           = render_navigation
       -if flash.any?

@@ -5,6 +5,7 @@ OpentreeApp::Application.routes.draw do
       get :importer
       post :importfromdbpedia
       post :importfromfacebook
+      get :destroyall
     end
   end
   get "home/index"
