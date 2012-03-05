@@ -21,17 +21,18 @@ class FacebookImporter
     
     response = http.request(request)
     get_info(@person_id)
+    @base_person_url = @person_link
     relatives = JSON(response.body)
     
     relatives["data"].each do |fbperson|
       @person_id = fbperson["id"]
       @name = fbperson["name"]
       @relation = fbperson["relationship"]
-      get_info(@person_id)
+      get_info(@person_id, @relation)
     end
   end
   
-  def get_info(person_id)
+  def get_info(person_id, relation_status=nil)
     uri = URI.parse("https://graph.facebook.com/#{person_id}?access_token=#{@token}")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
@@ -73,6 +74,9 @@ class FacebookImporter
     place.lat = @hometown_lat
     place.lon = @hometown_long
     place.save
+    if relation_status
+      relation = Person.find_by_url(@base_person_url).relations.create(:related_person_id => person.id, :status => relation_status)
+    end
     person.residences.create(:location_id => place.id, :status => "birthplace")
     p person.inspect
   end

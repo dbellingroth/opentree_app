@@ -25,5 +25,9 @@ class Person < ActiveRecord::Base
 	def	set_uncle(person)
 		#self.related_relations.create(:base_person_id => person.id, :status => "uncle")
 	end
+	
+	def name
+	  "#{lastname}, #{firstname}"
+	end
 		
 end

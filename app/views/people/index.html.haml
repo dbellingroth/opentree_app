@@ -5,7 +5,7 @@
 - for person in @people
   %div.teaser
     %div.name
-      = person.lastname + ", " + person.firstname
+      = person.name
       %div.bottom
         = link_to t('show'), person
         = link_to t('edit'), edit_person_path(person)
@@ -18,6 +18,5 @@
         %span= "Nachname: #{person.lastname}"
         %span= "Geschlecht: #{person.sex}"
         %span= "Geburtsdatum: #{person.birthdate}"
-        %span= "Beziehung: "
         %span= "Geburtsort/Heimat: #{person.residences.find_by_status("birthplace").location.name if person.residences.find_by_status("birthplace")}"
 = will_paginate @people
