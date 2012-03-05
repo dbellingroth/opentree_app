@@ -93,6 +93,8 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    simple-navigation (3.7.0)
+      activesupport (>= 2.3.2)
     sparql-client (0.0.11)
       json_pure (>= 1.4.2)
       net-http-persistent (~> 1.4.1)
@@ -123,6 +125,7 @@ DEPENDENCIES
   rails (= 3.2.1)
   rdf-sesame
   sass-rails (~> 3.2.3)
+  simple-navigation
   sparql-client
   sqlite3
   uglifier (>= 1.0.3)

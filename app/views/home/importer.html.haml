@@ -1,11 +1,23 @@
+%h1 Import aus dbPedia:
 =form_for(Person.new,:url => importfromdbpedia_home_index_path) do |f|
-  =f.label :firstname
-  =f.text_field :firstname
-  =f.label :lastname
-  =f.text_field :lastname
+  .field
+    =f.label :firstname
+    %br
+    =f.text_field :firstname
+    %br
+  .field
+    =f.label :lastname
+    %br
+    =f.text_field :lastname
+    %br
   =f.submit "Anfragen"
-  
+  %br
+  %br
+%h1 Import aus Facebook:
 =form_for(Person.new,:url => importfromfacebook_home_index_path) do |f|
-  =f.label :facebook_id
-  =f.text_field :facebook_id, :value => "630819600"
+  .field
+    =f.label :facebook_id
+    %br
+    =f.text_field :facebook_id, :value => "630819600"
+    %br
   =f.submit "Person mit Verwandten importieren"

@@ -10,6 +10,7 @@ gem 'haml'
 gem 'sparql-client'
 gem 'rdf-sesame'
 gem 'will_paginate'
+gem 'simple-navigation'
 
 # Gems used only for assets and not required
 # in production environments by default.

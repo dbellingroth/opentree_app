@@ -5,47 +5,50 @@
       %ul
       - @person.errors.full_messages.each do |msg|
         %li= msg
-  
-  .field
-    = f.label :url
-    %br
-    = f.text_field :url
-  .field
-    = f.label :firstname
-    %br
-    = f.text_field :firstname
-  .field
-    = f.label :lastname
-    %br
-    = f.text_field :lastname
-  .field
-    = f.label :birthname
-    %br
-    = f.text_field :birthname
-  .field
-    = f.label :sex
-    %br
-    = f.text_field :sex
-  .field
-    = f.label :birthdate
-    %br
-    = f.date_select :birthdate
-  .field
-    = f.label :deathdate
-    %br
-    = f.date_select :deathdate
-  .field
-    = f.label :birthplace
-    %br
-    = f.text_field :birthplace
-  .field
-    = f.label :birthplaceurl
-    %br
-    = f.text_field :birthplaceurl
-  .field
-    = f.label :thumbnail
-    %br
-    = f.text_field :thumbnail
+        
+  %div.left
+    .field
+      = f.label :url
+      %br
+      = f.text_field :url
+    .field
+      = f.label :firstname
+      %br
+      = f.text_field :firstname
+    .field
+      = f.label :lastname
+      %br
+      = f.text_field :lastname
+    .field
+      = f.label :birthname
+      %br
+      = f.text_field :birthname
+    .field
+      = f.label :sex
+      %br
+      = f.text_field :sex
+      
+  %div.right
+    .field
+      = f.label :birthdate
+      %br
+      = f.date_select :birthdate
+    .field
+      = f.label :deathdate
+      %br
+      = f.date_select :deathdate
+    .field
+      = f.label :birthplace
+      %br
+      = f.text_field :birthplace
+    .field
+      = f.label :birthplaceurl
+      %br
+      = f.text_field :birthplaceurl
+    .field
+      = f.label :thumbnail
+      %br
+      = f.text_field :thumbnail
 
   .actions
     = f.submit

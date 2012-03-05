@@ -22,11 +22,30 @@ pre {
   padding: 10px;
   font-size: 11px; }
 
+h1, h2, h3, h4 {
+  background-color: black;
+  color: white;
+  padding: 4px 6px 3px 3px;
+  display: inline;
+  font-size: 13px;
+}
+
+#flash_message {
+  background-color: #2AB20A;
+  color: white;
+  margin-left: 1px;
+  padding: 4px 6px 3px 3px;
+  display: inline;
+  font-size: 13px;
+}
+
 a {
   color: #000;
   text-decoration: none;
+  padding: 4px 6px 3px 3px;
+  outline: none;
   &:visited {
-    color: #666; }
+    color: #000; }
   &:hover {
     color: #fff;
     background-color: #B2068B; } }
@@ -62,7 +81,45 @@ div {
   ul li {
     font-size: 12px;
     list-style: square; } }
-    
-#wrapper {
-  
+
+#header {
+  height: 139px;
+  img {
+    height: 120px;
+    margin: 2px 80px;
+    float: right;
+  }
+}
+
+#navigation {
+  width: 500px;
+  ul { 
+    li {
+      background-color: black;
+      float: left;
+      list-style-type: none;
+      padding: 92px 23px 2px 22px;
+      a {
+        color: white;
+        padding: 1px 3px 3px 3px;
+        &:hover {
+          background-color: #2AB20A;
+        }
+      }
+      a.selected {
+        background-color: #2AB20A;
+      }
+    } 
+  }
+}
+
+#container {
+  width: 1000px;
+  float: left;
+}
+#footer {
+  clear: both;
+  padding-top: 20px;
+  font-size: 10px;
+  color: #666;
 }
