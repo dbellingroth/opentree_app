@@ -11,7 +11,7 @@ class Person < ActiveRecord::Base
 	scope :male, where(:sex => "male")
 	scope :female, where(:sex => "female")
 	def	relatives
-		relations + related_relations
+		related_relations
 	end
 	
 	def	uncles

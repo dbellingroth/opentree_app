@@ -76,7 +76,7 @@ class FacebookImporter
     place.lon = @hometown_long
     place.save
     if relation_status
-      relation = Person.find_by_url(@base_person_url).relations.create(:related_person_id => person.id, :status => relation_status)
+      Relation.new_relation_for_people(person,relation_status,Person.find_by_url(@base_person_url))
     end
     person.residences.create(:location_id => place.id, :status => "birthplace")
     p person.inspect
