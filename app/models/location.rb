@@ -7,7 +7,7 @@ class Location < ActiveRecord::Base
     l=Location.all
     cities = []
     l.each do |location|
-      counter = location.residences.birthplaces.select{|residence|residence.person.lastname == lastname}.count
+      counter = location.residences.birthplaces.select{|residence|!residence.person.nil? && residence.person.lastname == lastname}.count
       cities << {:count => counter, :name => location.name, :lat => location.lat, :lon => location.lon} if counter > 0
     end
     cities
