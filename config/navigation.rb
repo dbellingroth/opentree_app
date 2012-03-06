@@ -50,7 +50,7 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>. 
     #
     primary.item :persons, "Alle Personen", people_path
-    primary.item :import, "Importer", importer_home_index_path
+    primary.item :import, "Im-/Exporter", importer_home_index_path
     primary.item :googlemap, "Karte", map_home_index_path
     primary.item :destroyall, "Alle Personen löschen", destroyall_home_index_path
     
