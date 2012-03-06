@@ -1,42 +1,46 @@
-%div.create
+.create
   = link_to t('<< back'), people_path
   = link_to t('edit'), edit_person_path(@person)
   
-%div.show
-  %div.img
+.show
+  .img
     %img{:src => @person.thumbnail, :alt => @person.firstname + " " + @person.lastname}
   %div
-    %div.block
-      %div.dt= Person.human_attribute_name :url
-      %div.dd= @person.url
-    %div.block
-      %div.dt= Person.human_attribute_name :firstname
-      %div.dd= @person.firstname
-    %div.block
-      %div.dt= Person.human_attribute_name :lastname
-      %div.dd= @person.lastname
-    %div.block
-      %div.dt= Person.human_attribute_name :birthname
-      %div.dd= @person.birthname
+    .block
+      .dt= Person.human_attribute_name :url
+      .dd= @person.url
+    .block
+      .dt= Person.human_attribute_name :firstname
+      .dd= @person.firstname
+    .block
+      .dt= Person.human_attribute_name :lastname
+      .dd= @person.lastname
+    .block
+      .dt= Person.human_attribute_name :birthname
+      .dd= @person.birthname
+ 
+    .block
+      .dt= Person.human_attribute_name :sex
+      .dd= @person.sex
+    .block
+      .dt= Person.human_attribute_name :birthdate
+      .dd= @person.birthdate
+    .block
+      .dt= Person.human_attribute_name :deathdate
+      .dd= @person.deathdate
+    .block
+      .dt= Person.human_attribute_name :birthplace
+      .dd= @person.birthplace
+    .block
+      .dt= Person.human_attribute_name :birthplaceurl
+      .dd= @person.birthplaceurl
+    .block
+      .dt= Person.human_attribute_name :thumbnail
+      .dd= @person.thumbnail
+  .relations
+    %br
+    %h1 Eingetragene Verwandte:
     - @person.relatives.each do |relative|
-      %div.block
-        %div.dt= relative.status
-        %div.dd= link_to(relative.relative_person(@person).name, person_path(relative.relative_person(@person)))
-    %div.block
-      %div.dt= Person.human_attribute_name :sex
-      %div.dd= @person.sex
-    %div.block
-      %div.dt= Person.human_attribute_name :birthdate
-      %div.dd= @person.birthdate
-    %div.block
-      %div.dt= Person.human_attribute_name :deathdate
-      %div.dd= @person.deathdate
-    %div.block
-      %div.dt= Person.human_attribute_name :birthplace
-      %div.dd= @person.birthplace
-    %div.block
-      %div.dt= Person.human_attribute_name :birthplaceurl
-      %div.dd= @person.birthplaceurl
-    %div.block
-      %div.dt= Person.human_attribute_name :thumbnail
-      %div.dd= @person.thumbnail
+      .block
+        .dt= relative.status
+        .dd= link_to(relative.relative_person(@person).name, person_path(relative.relative_person(@person)))

@@ -21,7 +21,7 @@ div.teaser {
     color: white;
     padding-left: 3px;
     padding-bottom: 2px;
-    .bottom {
+    .top {
       float: right;
       text-align: right;
       a {
@@ -37,11 +37,11 @@ div.teaser {
   }
   .content {
     background-color: $gwhite;
-    height: 170px;
+    height: 140px;
     padding: 3px;
     .left {
       width: 100px;
-      height: 170px;
+      height: 140px;
       float: left;
     }
     .right {
@@ -79,20 +79,22 @@ div.show {
   width: 1000px;
   float: left;
   margin-left: 1px;
+  //background-color: $gwhite;
   div.img {
     width: 170px;
-    height: 277px;
+    height: 252px;
     padding: 3px;
     float: left;
     background-color: $gwhite;
     img {
       max-width: 170px;
-      max-height: 277px;
+      max-height: 252px;
     }
   }
   div {
     width: 824px;
     float: left;
+    //background-color: white;
     .block {
       margin-bottom: 3px;
       .dt {
@@ -107,6 +109,28 @@ div.show {
         padding: 2px 0 3px 5px;
       }
     }
+  }
+}
+
+.relations {
+  h1 {
+    margin-left: 0px;
+  }
+  width: 100%;
+  clear: both;
+  .block {
+      margin-bottom: 3px;
+      .dt {
+        width: 80px;
+        padding: 2px 0 3px 5px;
+        background-color: black;
+        color: white;
+      }
+      .dd {
+        width: 700px;
+        float: left;
+        padding: 2px 0 3px 5px;
+      }
   }
 }
 

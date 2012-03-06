@@ -1,19 +1,20 @@
-%div.create= link_to t('.create_new_person'), new_person_path
+.create= link_to t('.create_new_person'), new_person_path
 
 = will_paginate @people
-%div.list
+.list
 - for person in @people
-  %div.teaser
-    %div.name
+  .teaser
+    .name
       = person.name
-      %div.bottom
+      .top
         = link_to t('show'), person
         = link_to t('edit'), edit_person_path(person)
         = link_to t('destroy'), person, :confirm => 'Are you sure?', :method => :delete
-    %div.content
-      %div.left
+    .content
+      .left
         %img{:src => person.thumbnail, :alt => person.firstname + " " + person.lastname}
-      %div.right
+      .right
+        %span= "Eingetragene Verwandte: #{persons_relations_count(person)}"
         %span= "Vorname: #{person.firstname}"
         %span= "Nachname: #{person.lastname}"
         %span= "Geschlecht: #{person.sex}"

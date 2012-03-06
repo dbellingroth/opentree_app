@@ -14,9 +14,9 @@
     #wrapper
       #header
         = image_tag "logo.png", :alt => "Home"
-        %p=display_person_count
         #navigation
           = render_navigation
+      #flash_message= display_person_count
       -if flash.any?
         -flash.each do |k,v|
           #flash_message{:class => k}
