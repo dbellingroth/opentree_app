@@ -10,7 +10,7 @@
     %br
     =f.text_field :lastname
     %br
-  =f.submit "Anfragen"
+  =f.submit "Personen aus DBPedia importieren"
   %br
   %br
 %h1 Import aus Facebook:
@@ -21,3 +21,9 @@
     =f.text_field :facebook_id, :value => "630819600"
     %br
   =f.submit "Person mit Verwandten importieren"
+  %br
+  %br
+%h1 Export zu Sesame:
+=form_for(Person.new,:url => exporttosesame_home_index_path, :method => "GET") do |f|
+  %br
+  =f.submit "Exportieren"

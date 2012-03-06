@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120224141457) do
+ActiveRecord::Schema.define(:version => 20120306121558) do
 
   create_table "locations", :force => true do |t|
     t.string   "url"
@@ -30,11 +30,9 @@ ActiveRecord::Schema.define(:version => 20120224141457) do
     t.string   "sex"
     t.date     "birthdate"
     t.date     "deathdate"
-    t.string   "birthplace"
-    t.string   "birthplaceurl"
     t.string   "thumbnail"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "relatednesses", :force => true do |t|

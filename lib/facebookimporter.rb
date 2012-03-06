@@ -68,7 +68,7 @@ class FacebookImporter
     end
         
     person = Person.find_or_initialize_by_url(@person_link)
-    person.update_attributes(:url => @person_link, :firstname => @firstname, :lastname => @lastname, :sex => @sex, :birthdate => @birthdate, :birthplace => @hometown_name, :birthplaceurl => @hometown_link, :thumbnail => @profile_pic_url, )
+    person.update_attributes(:url => @person_link, :firstname => @firstname, :lastname => @lastname, :sex => @sex, :birthdate => @birthdate, :thumbnail => @profile_pic_url, )
     place = Location.find_or_initialize_by_url(@hometown_link)
     place.url = @hometown_link
     place.name = @hometown_name
