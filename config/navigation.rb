@@ -51,7 +51,7 @@ SimpleNavigation::Configuration.run do |navigation|
     #
     primary.item :persons, "Alle Personen", people_path
     primary.item :import, "Importer", importer_home_index_path
-    primary.item :googlemap, "Karte", map_path
+    primary.item :googlemap, "Karte", map_home_index_path
     primary.item :destroyall, "Alle Personen löschen", destroyall_home_index_path
     
 

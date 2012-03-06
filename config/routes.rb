@@ -5,15 +5,15 @@ OpentreeApp::Application.routes.draw do
       get :importer
       post :importfromdbpedia
       post :importfromfacebook
+      get :exporttosesame
       get :destroyall
+      get :map
+      get :mapdata
     end
   end
   get "home/index"
   
   root :to => "home#index"
-  match "/exporttosesame" => "home#exporttosesame"
-  match "/map" => "home#map"
-  match "/mapdata" => "home#mapdata"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
