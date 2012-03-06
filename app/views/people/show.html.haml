@@ -29,6 +29,9 @@
       .dt= Person.human_attribute_name :deathdate
       .dd= @person.deathdate
     .block
+      .dt=Person.human_attribute_name :birthplace
+      .dd=@person.residences.find_by_status("birthplace").location.name if @person.residences.find_by_status("birthplace")
+    .block
       .dt= Person.human_attribute_name :thumbnail
       .dd= @person.thumbnail
   .relations
