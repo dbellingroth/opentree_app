@@ -38,8 +38,8 @@
       .dt= Person.human_attribute_name :thumbnail
       .dd= @person.thumbnail
   .relations
-    %br
-    %h1 Eingetragene Verwandte:
+    .head
+      %h1 Eingetragene Verwandte:
     - @person.relatives.each do |relative|
       .block
         .dt= relative.status

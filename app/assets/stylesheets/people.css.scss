@@ -43,6 +43,9 @@ div.teaser {
       width: 100px;
       height: 140px;
       float: left;
+      img {
+        max-height: 140px;
+      }
     }
     .right {
       width: 385px;
@@ -82,13 +85,13 @@ div.show {
   //background-color: $gwhite;
   div.img {
     width: 170px;
-    height: 252px;
+    height: 251px;
     padding: 3px;
     float: left;
     background-color: $gwhite;
     img {
       max-width: 170px;
-      max-height: 252px;
+      max-height: 251px;
     }
   }
   div {
@@ -113,8 +116,11 @@ div.show {
 }
 
 .relations {
-  h1 {
-    margin-left: 0px;
+  .head {
+    margin: 10px 0 5px 0;
+    h1 {
+      margin: 0px;
+    }
   }
   width: 100%;
   clear: both;
@@ -127,6 +133,9 @@ div.show {
         color: white;
       }
       .dd {
+        a {
+          padding-bottom: 4px;
+        }
         width: 700px;
         float: left;
         padding: 2px 0 3px 5px;
