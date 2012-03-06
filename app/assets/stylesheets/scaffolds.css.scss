@@ -31,15 +31,6 @@ h1, h2, h3, h4 {
   margin-left: 1px;
 }
 
-#flash_message {
-  background-color: #2AB20A;
-  color: white;
-  margin-left: 1px;
-  padding: 4px 6px 3px 3px;
-  display: inline;
-  font-size: 13px;
-}
-
 a {
   color: #000;
   text-decoration: none;
@@ -93,9 +84,10 @@ div {
 }
 
 #navigation {
-  width: 495px;
+  width: 465px;
   height: 112px;
   background-color: black;
+  padding-left: 30px;
   ul { 
     li {
       float: left;

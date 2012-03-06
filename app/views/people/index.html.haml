@@ -1,3 +1,14 @@
+#info
+  #flash_message= display_person_count
+  -if flash.any?
+    -flash.each do |k,v|
+      #flash_message{:class => k}
+        = v
+  .search
+    = form_tag request.path, :method => 'get' do 
+      = text_field_tag :search, params[:search]
+      = submit_tag "Search", :name => nil
+
 .create= link_to t('.create_new_person'), new_person_path
 
 = will_paginate @people

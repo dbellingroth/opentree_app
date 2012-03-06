@@ -1,5 +1,11 @@
-%div.create
+#info
+  #flash_message= display_person_count
+  -if flash.any?
+    -flash.each do |k,v|
+      #flash_message{:class => k}
+        = v
+.create
   = link_to t('<< back'), people_path
   = link_to t('show'), @person
-%div.form
+.form
   = render 'form'

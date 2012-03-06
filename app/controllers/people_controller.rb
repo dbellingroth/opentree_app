@@ -2,12 +2,13 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
+    #@people = Person.search(params[:search], params[:page])
     @people = Person.order("updated_at desc").paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @people }
     end
-  end
+end
 
   # GET /people/1
   # GET /people/1.json
@@ -79,4 +80,5 @@ class PeopleController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 end

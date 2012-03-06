@@ -33,5 +33,9 @@ class Person < ActiveRecord::Base
 	def birthplaceurl
     self.residences.find_by_status("birthplace").location.url if self.residences.find_by_status("birthplace")
   end	
+  
+  def self.search(search, page)
+    paginate :per_page => 10, :page => page, :conditions => ['firstname LIKE ?', "#{search}"], :order => '"updated_at desc"'
+  end
 		
 end

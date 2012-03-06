@@ -36,7 +36,7 @@
     .field
       = f.label :deathdate
       %br
-      = f.date_select :deathdate
+      = f.date_select(:deathdate, :include_blank => true, :start_year => Time.now.year-90, :end_year => Time.now.year, :default => nil) 
     .field
       = f.label :thumbnail
       %br
