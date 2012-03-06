@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-	attr_accessible	:url, :firstname, :lastname, :birthname, :sex, :birthdate, :deathdate, :birthplace, :birthplaceurl, :thumbnail
+	#attr_accessible	:url, :firstname, :lastname, :birthname, :sex, :birthdate, :deathdate, :birthplace, :birthplaceurl, :thumbnail
 	
 	has_many :residences, :dependent => :destroy
 	has_many :locations, :through => :residences
@@ -29,5 +29,9 @@ class Person < ActiveRecord::Base
 	def name
 	  "#{lastname}, #{firstname}"
 	end
+	
+	def birthplaceurl
+    self.residences.find_by_status("birthplace").location.url if self.residences.find_by_status("birthplace")
+  end	
 		
 end
