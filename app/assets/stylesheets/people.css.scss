@@ -25,7 +25,7 @@ div.teaser {
       float: right;
       text-align: right;
       a {
-        padding: 4px 6px 3px 3px;
+        padding: 4px 6px 4px 3px;
         font-size: 10px;
         color: #AAA;
         &:hover {
@@ -37,14 +37,14 @@ div.teaser {
   }
   .content {
     background-color: $gwhite;
-    min-height: 140px;
+    height: 155px;
     padding: 3px;
     .left {
       width: 100px;
-      height: 140px;
+      height: 155px;
       float: left;
       img {
-        max-height: 140px;
+        max-height: 155px;
       }
     }
     .right {
